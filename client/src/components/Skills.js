@@ -56,13 +56,13 @@ const SkillItem = styled(motion.div)(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   marginBottom: theme.spacing(3),
-  width: '100px',
+  width: '80px',
   textAlign: 'center',
 }));
 
 const IconWrapper = styled(Box)(({ theme }) => ({
-  width: '40px',
-  height: '40px',
+  width: '30px',
+  height: '30px',
   marginBottom: theme.spacing(1),
   display: 'flex',
   alignItems: 'center',
@@ -180,8 +180,8 @@ const Skills = () => {
       animate="visible"
       sx={{
         minHeight: '100vh',
-        pt: { xs: 12, md: 16 },
-        pb: 8,
+        pt: { xs: 14, md: 16 },
+        pb: { xs: 10, md: 12 },
         background: '#0A0A0A',
         position: 'relative',
         zIndex: 1,
@@ -216,7 +216,7 @@ const Skills = () => {
               <CategoryTitle variant="h5">
                 {category.category}
               </CategoryTitle>
-              <SkillsGrid container spacing={2}>
+              <SkillsGrid container spacing={{ xs: 2, md: 3 }}>
                 {category.skills.map((skill, skillIndex) => (
                   <Grid item xs={4} sm={3} md={2} key={skillIndex}>
                     <SkillItem whileHover={{ y: -5 }}>

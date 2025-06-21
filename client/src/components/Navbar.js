@@ -101,23 +101,45 @@ const Navbar = () => {
         behavior: 'smooth'
       });
       setActiveSection(path);
-      handleDrawerToggle();
+      
+      // Only close drawer if on mobile
+      if (isMobile && mobileOpen) {
+        handleDrawerToggle();
+      }
     }
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', p: 2 }}>
+    <Box sx={{ textAlign: 'center', p: 2, width: 250, bgcolor: 'background.paper' }}>
+      <Box sx={{ my: 2 }}>
+        <Logo>
+          <span className="bracket">{'{'}</span>
+          Vishwajit
+          <span className="bracket">{'}'}</span>
+        </Logo>
+      </Box>
       <List>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
             button 
             onClick={() => scrollToSection(item.path)}
+            sx={{
+              borderRadius: 1,
+              mb: 1,
+              '&:hover': {
+                bgcolor: 'rgba(0, 0, 0, 0.04)'
+              }
+            }}
           >
             <ListItemText 
               primary={item.name}
+              primaryTypographyProps={{
+                fontWeight: activeSection === item.path ? 700 : 400,
+              }}
               sx={{
                 color: activeSection === item.path ? 'primary.main' : 'text.primary',
+                textAlign: 'center'
               }}
             />
           </ListItem>
@@ -145,8 +167,14 @@ const Navbar = () => {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              edge="start"
+              edge="end"
               onClick={handleDrawerToggle}
+              sx={{
+                bgcolor: 'rgba(255, 255, 255, 0.1)',
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.2)'
+                }
+              }}
             >
               <MenuIcon />
             </IconButton>

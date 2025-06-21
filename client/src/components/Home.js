@@ -33,13 +33,14 @@ const Home = () => {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        pt: { xs: 8, md: 0 },
+        pt: { xs: 10, md: 0 },
+        pb: { xs: 6, md: 0 },
         backgroundColor: '#0a0a0a',
         background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4} alignItems="center">
+        <Grid container spacing={{ xs: 6, md: 4 }} alignItems="center" justifyContent="space-between">
           <Grid item xs={12} md={6}>
             <motion.div variants={itemVariants}>
               <Typography

@@ -98,19 +98,19 @@ function App() {
       <Suspense fallback={<LoadingScreen />}>
         <Box sx={{ overflowX: 'hidden' }}>
           <Navbar />
-          <Box id="home">
+          <Box id="home" sx={{ scrollMarginTop: { xs: '70px', md: '80px' } }}>
             <Home />
           </Box>
-          <Box id="about">
+          <Box id="about" sx={{ scrollMarginTop: { xs: '70px', md: '80px' } }}>
             <About />
           </Box>
-          <Box id="projects">
+          <Box id="projects" sx={{ scrollMarginTop: { xs: '70px', md: '80px' } }}>
             <Projects />
           </Box>
-          <Box id="skills">
+          <Box id="skills" sx={{ scrollMarginTop: { xs: '70px', md: '80px' } }}>
             <Skills />
           </Box>
-          <Box id="contact">
+          <Box id="contact" sx={{ scrollMarginTop: { xs: '70px', md: '80px' } }}>
             <Contact />
           </Box>
         </Box>

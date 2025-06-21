@@ -57,8 +57,9 @@ const About = () => {
       animate="visible"
       sx={{
         minHeight: '100vh',
-        pt: { xs: 12, md: 16 },
-        pb: 8,
+        pt: { xs: 14, md: 16 },
+        pb: { xs: 10, md: 12 },
+        backgroundColor: '#0a0a0a',
       }}
     >
       <Container maxWidth="lg">
@@ -80,7 +81,7 @@ const About = () => {
           </Typography>
         </motion.div>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 4, md: 6 }}>
           <Grid item xs={12} md={6}>
             <motion.div variants={itemVariants}>
               <StyledPaper>
@@ -145,4 +146,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

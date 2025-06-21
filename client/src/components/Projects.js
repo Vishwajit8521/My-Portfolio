@@ -163,8 +163,9 @@ const Projects = memo(() => {
       animate="visible"
       sx={{
         minHeight: '100vh',
-        pt: { xs: 12, md: 16 },
-        pb: 8,
+        pt: { xs: 14, md: 16 },
+        pb: { xs: 10, md: 12 },
+        backgroundColor: '#0a0a0a',
       }}
     >
       <Container maxWidth="lg">
@@ -187,7 +188,7 @@ const Projects = memo(() => {
         </motion.div>
 
         <AnimatePresence>
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs: 4, md: 6 }}>
             {memoizedProjects.map((project) => (
               <Grid item xs={12} md={6} lg={4} key={project.title}>
                 <ProjectCard

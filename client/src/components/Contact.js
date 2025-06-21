@@ -50,14 +50,16 @@ const Contact = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 3,
+        pt: { xs: 14, md: 16 },
+        pb: { xs: 10, md: 12 },
+        px: 3,
         position: 'relative',
-        bgcolor: 'background.default',
+        bgcolor: '#0a0a0a',
         color: 'text.primary',
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={5} alignItems="center" justifyContent="space-between">
+        <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center" justifyContent="space-between">
           <Grid item xs={12} md={6} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <GradientTypography variant="h2" component="h1" sx={{ mb: 1 }}>
               Vishwajit Kumar
