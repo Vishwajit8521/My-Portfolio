@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Modern Portfolio Website
 
 A modern, responsive portfolio website built with React.js frontend and Node.js/Express.js backend.
@@ -67,3 +68,6 @@ portfolio/
 =======
 # My-Portfolio
 >>>>>>> 49bedbd3afd6cc50425fe3246afc8c790032b97c
+=======
+# My-Portfolio
+>>>>>>> e66e290fcbcb3270d65a0e3055b923d2cf77004a
