@@ -73,7 +73,7 @@ const Contact = () => {
               <SocialIconButton href="mailto:vk7403654@gmail.com" aria-label="Email">
                 <EmailIcon />
               </SocialIconButton>
-              <SocialIconButton href="https://www.linkedin.com/in/vishwajit-kale-3040a4250/" target="_blank" aria-label="LinkedIn">
+              <SocialIconButton href="https://www.linkedin.com/in/vishwajit-kumar-8ab325269" target="_blank" aria-label="LinkedIn">
                 <LinkedInIcon />
               </SocialIconButton>
               <SocialIconButton href="https://github.com/Vishwajit8521" target="_blank" aria-label="GitHub">
@@ -83,8 +83,8 @@ const Contact = () => {
 
             <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}>
               <ActionButton 
-                href="/path-to-resume.pdf" 
-                download 
+                href="/resume.pdf" 
+                download="Vishwajit_Kumar_Resume.pdf" 
                 startIcon={<DownloadIcon />}
               >
                 Resume

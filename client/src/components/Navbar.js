@@ -66,6 +66,8 @@ const Navbar = () => {
     { name: 'Contact', path: '#contact' }
   ], []);
   
+
+  
   React.useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.path.substring(1));
@@ -146,7 +148,8 @@ const Navbar = () => {
       >
         <CloseIcon sx={{ color: '#64ffda', fontSize: '1.2rem' }} />
       </IconButton>
-      <List sx={{ width: '100%', mt: 6 }}>
+
+      <List sx={{ width: '100%' }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
@@ -215,45 +218,47 @@ const Navbar = () => {
             </Logo>
           </Box>
 
-          {isMobile ? (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="end"
-              onClick={handleDrawerToggle}
-              sx={{
-                position: 'relative',
-                width: '45px',
-                height: '45px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(121, 40, 202, 0.1))',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(100, 255, 218, 0.15)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(121, 40, 202, 0.2))',
-                  transform: 'scale(1.05)'
-                }
-              }}
-            >
-              <MenuIcon sx={{ color: '#64ffda' }} />
-            </IconButton>
-          ) : (
-            <Box>
-              {navItems.map((item) => (
-                <NavButton
-                  key={item.name}
-                  onClick={() => scrollToSection(item.path)}
-                  sx={{
-                    color: activeSection === item.path ? 'primary.main' : 'text.primary',
-                    cursor: 'pointer'
-                  }}
-                >
-                  {item.name}
-                </NavButton>
-              ))}
-            </Box>
-          )}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {isMobile ? (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={handleDrawerToggle}
+                sx={{
+                  position: 'relative',
+                  width: '45px',
+                  height: '45px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(121, 40, 202, 0.1))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(100, 255, 218, 0.15)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(121, 40, 202, 0.2))',
+                    transform: 'scale(1.05)'
+                  }
+                }}
+              >
+                <MenuIcon sx={{ color: '#64ffda' }} />
+              </IconButton>
+            ) : (
+              <Box>
+                {navItems.map((item) => (
+                  <NavButton
+                    key={item.name}
+                    onClick={() => scrollToSection(item.path)}
+                    sx={{
+                      color: activeSection === item.path ? 'primary.main' : 'text.primary',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {item.name}
+                  </NavButton>
+                ))}
+              </Box>
+            )}
+          </Box>
         </Toolbar>
       </StyledAppBar>
 
