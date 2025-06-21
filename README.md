@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Modern Portfolio Website
 
 A modern, responsive portfolio website built with React.js frontend and Node.js/Express.js backend.
@@ -63,3 +64,6 @@ portfolio/
 - Skills section
 - About me
 - Resume download 
+=======
+# My-Portfolio
+>>>>>>> 49bedbd3afd6cc50425fe3246afc8c790032b97c
