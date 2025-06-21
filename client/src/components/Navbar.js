@@ -113,8 +113,8 @@ const Navbar = () => {
     <Box 
       sx={{ 
         textAlign: 'center', 
-        p: 3, 
-        width: 280, 
+        p: 2, 
+        width: 220, 
         height: '100%',
         background: 'linear-gradient(180deg, #0A0A0A 0%, #121212 100%)',
         borderLeft: '1px solid rgba(100, 255, 218, 0.1)',
@@ -122,10 +122,10 @@ const Navbar = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        px: 4
+        px: 2
       }}
     >
-      <List sx={{ width: '100%', mt: 4 }}>
+      <List sx={{ width: '100%', mt: 3 }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
@@ -133,8 +133,8 @@ const Navbar = () => {
             onClick={() => scrollToSection(item.path)}
             sx={{
               borderRadius: 2,
-              mb: 2,
-              py: 1.5,
+              mb: 1.5,
+              py: 1.2,
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
@@ -158,7 +158,7 @@ const Navbar = () => {
               primary={item.name}
               primaryTypographyProps={{
                 fontWeight: activeSection === item.path ? 700 : 500,
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 letterSpacing: '0.5px'
               }}
               sx={{
