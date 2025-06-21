@@ -120,10 +120,12 @@ const Navbar = () => {
         borderLeft: '1px solid rgba(100, 255, 218, 0.1)',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        px: 4
       }}
     >
-      <List sx={{ width: '100%' }}>
+      <List sx={{ width: '100%', mt: 4 }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
@@ -242,6 +244,7 @@ const Navbar = () => {
         PaperProps={{
           sx: {
             boxShadow: '-5px 0 20px rgba(0, 0, 0, 0.5)',
+            background: 'transparent'
           }
         }}
         ModalProps={{
