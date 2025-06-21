@@ -147,7 +147,13 @@ const Navbar = () => {
         <Toolbar>
           <Box 
             onClick={() => scrollToSection('#home')} 
-            sx={{ textDecoration: 'none', flexGrow: 1, cursor: 'pointer' }}
+            sx={{ 
+              textDecoration: 'none', 
+              flexGrow: 1, 
+              cursor: 'pointer',
+              display: 'inline-flex',
+              width: 'auto'
+            }}
           >
             <Logo>
               <span className="bracket">{'{'}</span>
