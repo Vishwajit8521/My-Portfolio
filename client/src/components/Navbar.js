@@ -111,14 +111,7 @@ const Navbar = () => {
 
   const drawer = (
     <Box sx={{ textAlign: 'center', p: 2, width: 250, bgcolor: 'background.paper' }}>
-      <Box sx={{ my: 2 }}>
-        <Logo>
-          <span className="bracket">{'{'}</span>
-          Vishwajit
-          <span className="bracket">{'}'}</span>
-        </Logo>
-      </Box>
-      <List>
+      <List sx={{ mt: 2 }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
