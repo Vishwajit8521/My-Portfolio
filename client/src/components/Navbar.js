@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: 'rgba(10, 10, 10, 0.85)',
@@ -114,18 +115,38 @@ const Navbar = () => {
       sx={{ 
         textAlign: 'center', 
         p: 2, 
-        width: 220, 
+        width: 180, 
         height: '100%',
         background: 'linear-gradient(180deg, #0A0A0A 0%, #121212 100%)',
         borderLeft: '1px solid rgba(100, 255, 218, 0.1)',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        position: 'relative',
         px: 2
       }}
     >
-      <List sx={{ width: '100%', mt: 3 }}>
+      <IconButton
+        onClick={handleDrawerToggle}
+        sx={{
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          width: '35px',
+          height: '35px',
+          borderRadius: '10px',
+          background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(121, 40, 202, 0.1))',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(100, 255, 218, 0.15)',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(121, 40, 202, 0.2))',
+            transform: 'scale(1.05)'
+          }
+        }}
+      >
+        <CloseIcon sx={{ color: '#64ffda', fontSize: '1.2rem' }} />
+      </IconButton>
+      <List sx={{ width: '100%', mt: 6 }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
@@ -133,8 +154,8 @@ const Navbar = () => {
             onClick={() => scrollToSection(item.path)}
             sx={{
               borderRadius: 2,
-              mb: 1.5,
-              py: 1.2,
+              mb: 1,
+              py: 1,
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
@@ -158,7 +179,7 @@ const Navbar = () => {
               primary={item.name}
               primaryTypographyProps={{
                 fontWeight: activeSection === item.path ? 700 : 500,
-                fontSize: '1rem',
+                fontSize: '0.9rem',
                 letterSpacing: '0.5px'
               }}
               sx={{
