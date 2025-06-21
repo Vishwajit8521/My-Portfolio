@@ -110,29 +110,59 @@ const Navbar = () => {
   };
 
   const drawer = (
-    <Box sx={{ textAlign: 'center', p: 2, width: 250, bgcolor: 'background.paper' }}>
-      <List sx={{ mt: 2 }}>
+    <Box 
+      sx={{ 
+        textAlign: 'center', 
+        p: 3, 
+        width: 280, 
+        height: '100%',
+        background: 'linear-gradient(180deg, #0A0A0A 0%, #121212 100%)',
+        borderLeft: '1px solid rgba(100, 255, 218, 0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}
+    >
+      <List sx={{ width: '100%' }}>
         {navItems.map((item) => (
           <ListItem 
             key={item.name} 
             button 
             onClick={() => scrollToSection(item.path)}
             sx={{
-              borderRadius: 1,
-              mb: 1,
+              borderRadius: 2,
+              mb: 2,
+              py: 1.5,
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden',
+              '&:before': activeSection === item.path ? {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                bottom: 0,
+                width: '4px',
+                background: 'linear-gradient(45deg, #64ffda, #7928ca)',
+                borderRadius: '0 4px 4px 0',
+              } : {},
               '&:hover': {
-                bgcolor: 'rgba(0, 0, 0, 0.04)'
+                bgcolor: 'rgba(100, 255, 218, 0.05)',
+                transform: 'translateX(5px)'
               }
             }}
           >
             <ListItemText 
               primary={item.name}
               primaryTypographyProps={{
-                fontWeight: activeSection === item.path ? 700 : 400,
+                fontWeight: activeSection === item.path ? 700 : 500,
+                fontSize: '1.1rem',
+                letterSpacing: '0.5px'
               }}
               sx={{
                 color: activeSection === item.path ? 'primary.main' : 'text.primary',
-                textAlign: 'center'
+                textAlign: 'left',
+                ml: 2
               }}
             />
           </ListItem>
@@ -169,13 +199,21 @@ const Navbar = () => {
               edge="end"
               onClick={handleDrawerToggle}
               sx={{
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
+                position: 'relative',
+                width: '45px',
+                height: '45px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(121, 40, 202, 0.1))',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(100, 255, 218, 0.15)',
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: 'rgba(255, 255, 255, 0.2)'
+                  background: 'linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(121, 40, 202, 0.2))',
+                  transform: 'scale(1.05)'
                 }
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: '#64ffda' }} />
             </IconButton>
           ) : (
             <Box>
@@ -201,6 +239,11 @@ const Navbar = () => {
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
+        PaperProps={{
+          sx: {
+            boxShadow: '-5px 0 20px rgba(0, 0, 0, 0.5)',
+          }
+        }}
         ModalProps={{
           keepMounted: true,
         }}
