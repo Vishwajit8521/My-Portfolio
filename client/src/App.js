@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import LoadingScreen from './components/LoadingScreen';
+import Box from '@mui/material/Box';
 
 
 const Navbar = lazy(() => import('./components/Navbar'));
@@ -95,18 +95,26 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <Suspense fallback={<LoadingScreen />}>
+      <Suspense fallback={<LoadingScreen />}>
+        <Box sx={{ overflowX: 'hidden' }}>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Suspense>
-      </Router>
+          <Box id="home">
+            <Home />
+          </Box>
+          <Box id="about">
+            <About />
+          </Box>
+          <Box id="projects">
+            <Projects />
+          </Box>
+          <Box id="skills">
+            <Skills />
+          </Box>
+          <Box id="contact">
+            <Contact />
+          </Box>
+        </Box>
+      </Suspense>
     </ThemeProvider>
   );
 }

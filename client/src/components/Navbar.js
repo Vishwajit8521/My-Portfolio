@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -56,29 +55,69 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('#home');
+  
+  const navItems = useMemo(() => [
+    { name: 'Home', path: '#home' },
+    { name: 'About', path: '#about' },
+    { name: 'Projects', path: '#projects' },
+    { name: 'Skills', path: '#skills' },
+    { name: 'Contact', path: '#contact' }
+  ], []);
+  
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => item.path.substring(1));
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection('#' + section);
+            break;
+          }
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navItems]);
 
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Contact', path: '/Contact' }
-];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const scrollToSection = (path) => {
+    const element = document.querySelector(path);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+      });
+      setActiveSection(path);
+      handleDrawerToggle();
+    }
   };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', p: 2 }}>
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.name} component={Link} to={item.path}>
+          <ListItem 
+            key={item.name} 
+            button 
+            onClick={() => scrollToSection(item.path)}
+          >
             <ListItemText 
               primary={item.name}
               sx={{
-                color: location.pathname === item.path ? 'primary.main' : 'text.primary',
+                color: activeSection === item.path ? 'primary.main' : 'text.primary',
               }}
             />
           </ListItem>
@@ -91,13 +130,16 @@ const Navbar = () => {
     <div>
       <StyledAppBar position="fixed">
         <Toolbar>
-          <Link to="/" style={{ textDecoration: 'none', flexGrow: 1 }}>
+          <Box 
+            onClick={() => scrollToSection('#home')} 
+            sx={{ textDecoration: 'none', flexGrow: 1, cursor: 'pointer' }}
+          >
             <Logo>
               <span className="bracket">{'{'}</span>
               Vishwajit
               <span className="bracket">{'}'}</span>
             </Logo>
-          </Link>
+          </Box>
 
           {isMobile ? (
             <IconButton
@@ -113,10 +155,10 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <NavButton
                   key={item.name}
-                  component={Link}
-                  to={item.path}
+                  onClick={() => scrollToSection(item.path)}
                   sx={{
-                    color: location.pathname === item.path ? 'primary.main' : 'text.primary',
+                    color: activeSection === item.path ? 'primary.main' : 'text.primary',
+                    cursor: 'pointer'
                   }}
                 >
                   {item.name}
@@ -142,4 +184,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
